@@ -1,3 +1,9 @@
+
+
+## CONNER BONE AND DANIEL SOARES
+
+
+
 ####
 # Each team's file must define four tokens:
 #     team_name: a string
@@ -6,8 +12,8 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'The name the team gives to itself' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
+team_name = 'Bogeyman Wolf' # Only 10 chars displayed.
+strategy_name = 'Arbitrary Description'
 strategy_description = 'How does this strategy decide?'
     
 def move(my_history, their_history, my_score, their_score):
