@@ -26,7 +26,36 @@ def move(my_history, their_history, my_score, their_score):
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
     
-    return 'c'
+    options = ['b', 'c']
+    tieBreaker = random.choice(options)
+
+    theirBs = 0
+    myBs = 0
+    theirCs= 0
+    myCs = 0
+
+    for item in their_history:
+        if item == 'b':
+            theirBs += 1
+        else:
+            theirCs +=1
+        
+    for item in my_history:
+        if item == 'b':
+            myBs +=1
+        else:
+            myCs +=1
+        
+    if my_score > their_score and theirBs > myBs:
+        return "b"
+    elif my_score > their_score and theirCs > myCs:
+        return "c"
+    elif my_score < their_score and thierBs > myBs:
+        return "b"       
+    elif my_score < their_score and theirCs > myCs:
+        return "b" 
+    else:
+        return tieBreaker
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
