@@ -1,3 +1,4 @@
+import random
 ####
 # Each team's file must define four tokens:
 #     team_name: a string
@@ -7,9 +8,15 @@
 ####
 
 team_name = '4LEX' # Only 10 chars displayed.
-strategy_name = 'Betray'
-strategy_description = 'Always Betray'
-    
+strategy_name = 'Cooperate'
+strategy_description = 'First move is random, the rest is based on if they have betrayed at all.'
+firstMoveInt=random.randint(1, 2)
+firstMove = ''
+if firstMoveInt == 1:
+    firstMove='b'
+elif firstMoveInt == 2:
+    firstMove='c'
+  
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
@@ -25,10 +32,14 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    
-    return 'b'
-
-    
+    if my_history == '' and their_history == '':
+        return firstMove  
+    else:
+        if 'b' not in their_history:
+            return 'c'
+        else:
+            return 'b'
+  
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
@@ -47,16 +58,16 @@ def test_move(my_history, their_history, my_score, their_score, result):
 
 if __name__ == '__main__':
      
-    # Test 1: Betray on first move.
+    # Test 1: Random first move.
     if test_move(my_history='',
               their_history='', 
               my_score=0,
               their_score=0,
-              result='b'):
+              result=firstMove):
          print 'Test passed'
-     # Test 2: Continue betraying if they collude despite being betrayed.
-    test_move(my_history='bbb',
-              their_history='ccc', 
+     # Test 2: Repeatedly betray if they betrayed once.
+    test_move(my_history='ccb',
+              their_history='cbc', 
               # Note the scores are for testing move().
               # The history and scores don't need to match unless
               # that is relevant to the test of move(). Here,
