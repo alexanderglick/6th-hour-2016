@@ -8,10 +8,22 @@ import random
 ####
 
 team_name = '4LEX' # Only 10 chars displayed.
+<<<<<<< HEAD
 strategy_name = 'Cooperate or Retiliate'
 strategy_description = 'Collude everytime unless they have betrayed at all. If they betray even once betray everytime.'
 
 
+=======
+strategy_name = 'Cooperate'
+strategy_description = 'First move is random, the rest is based on if they have betrayed at all.'
+firstMoveInt=random.randint(1, 2)
+firstMove = ''
+if firstMoveInt == 1:
+    firstMove='b'
+elif firstMoveInt == 2:
+    firstMove='c'
+  
+>>>>>>> origin/master
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
@@ -27,10 +39,20 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
+<<<<<<< HEAD
     if 'b' in their_history:
         return 'b'
     else:
         return 'c'
+=======
+    if my_history == '' and their_history == '':
+        return firstMove  
+    else:
+        if 'b' not in their_history:
+            return 'c'
+        else:
+            return 'b'
+>>>>>>> origin/master
   
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
