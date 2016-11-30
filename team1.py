@@ -1,3 +1,4 @@
+import random
 ####
 # Each team's file must define four tokens:
 #     team_name: a string
@@ -7,9 +8,10 @@
 ####
 
 team_name = '4LEX' # Only 10 chars displayed.
-strategy_name = 'Cooperate'
-strategy_description = 'Always Colude UNLESS they betrayed even once.  Then never collude.'
-    
+strategy_name = 'Cooperate or Retiliate'
+strategy_description = 'Collude everytime unless they have betrayed at all. If they betray even once betray everytime.'
+
+
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
@@ -29,8 +31,7 @@ def move(my_history, their_history, my_score, their_score):
         return 'b'
     else:
         return 'c'
-
-    
+  
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
@@ -49,16 +50,16 @@ def test_move(my_history, their_history, my_score, their_score, result):
 
 if __name__ == '__main__':
      
-    # Test 1: Betray on first move.
+    # Test 1: Random first move.
     if test_move(my_history='',
               their_history='', 
               my_score=0,
               their_score=0,
-              result='b'):
+              result=firstMove):
          print 'Test passed'
-     # Test 2: Continue betraying if they collude despite being betrayed.
-    test_move(my_history='bbb',
-              their_history='ccc', 
+     # Test 2: Repeatedly betray if they betrayed once.
+    test_move(my_history='ccb',
+              their_history='cbc', 
               # Note the scores are for testing move().
               # The history and scores don't need to match unless
               # that is relevant to the test of move(). Here,
