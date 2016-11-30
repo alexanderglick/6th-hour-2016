@@ -7,8 +7,8 @@
 ####
 
 team_name = '4LEX' # Only 10 chars displayed.
-strategy_name = 'Betray'
-strategy_description = 'Always betray.'
+strategy_name = 'Cooperate'
+strategy_description = 'Always Colude UNLESS they betrayed even once.  Then never collude.'
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -25,8 +25,10 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    
-    return 'b'
+    if 'b' in their_history:
+        return 'b'
+    else:
+        return 'c'
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
