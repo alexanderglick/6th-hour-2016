@@ -41,9 +41,8 @@ import team10, team11, team12, team13, team14
 betray = example1
 collude = example0
 
-modules = [example0, example1, example2, example3, example4, example5, example6, example7,
-team0, team1, team2, team3, team4, team5, team6, team7, team8, team9, team10, 
-team11, team12, team13, team14]
+modules = [ example6, example7,
+ team8]
 for module in modules:
     reload(module)
     print ('reloaded',module)
@@ -78,6 +77,7 @@ def play_tournament(modules):
         strategy_description: a string
         move: A function that returns 'c' or 'b'
     '''
+    modules=[example1,example2,example3,example4,example5, example6, example7,team8]
     zeros_list = [0]*len(modules) # to initialize each player's head-to-head scores
     scores = [zeros_list[:] for module in modules] # Copy it or it's only 1 list
     moves = [zeros_list[:] for module in modules] # Copy it or it's only 1 list
